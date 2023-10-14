@@ -176,7 +176,7 @@ c(1, 2, 3, 4) + c(0, 10, 100)
 
 #### Шаг 17
 
-In many programming environments, the up arrow will cycle through previous commands. Try hitting the up arrow on your keyboard until you get to this command (z * 2 + 100), then change 100 to 1000 and hit Enter. If the up arrow doesn't work for you, just type the corrected command.
+In many programming environments, the up arrow will cycle through previous commands. Try hitting the up arrow on your keyboard until you get to this command (z \* 2 + 100), then change 100 to 1000 and hit Enter. If the up arrow doesn't work for you, just type the corrected command.
 
 ```{r}
 z * 2 + 1000
@@ -190,35 +190,159 @@ You can type the first two letters of the variable name, then hit the Tab key (p
 my_div
 ```
 
+### Рабочие пространства и файлы
 
+#### Шаг 1
 
+Determine which directory your R session is using as its current working directory using getwd().
 
+```{r}
+getwd()
+```
 
+#### Шаг 2
 
+List all the objects in your local workspace using ls().
 
+```{r}
+ls()
+```
 
+#### Шаг 3
 
+Assign 9 to x using x <- 9.
 
+```{r}
+x <- 9
+```
 
+#### Шаг 4
 
+Now take a look at objects that are in your workspace using ls().
 
+```{r}
+ls()
+```
 
+#### Шаг 5
 
+List all the files in your working directory using list.files() or dir().
 
+```{r}
+dir()
+```
 
+#### Шаг 6
 
+As we go through this lesson, you should be examining the help page for each new function. Check out the help page for list.files with the command ?list.files.
 
+```{r}
+?list.files
+```
 
+#### Шаг 7
 
+Use the args() function to determine the arguments to list.files().
 
+```{r}
+args(list.files)
+```
 
+#### Шаг 8
 
+Use the args() function to determine the arguments to list.files().
 
+```{r}
+old.dir <- getwd()
+```
 
+#### Шаг 9
 
+Use dir.create() to create a directory in the current working directory called "testdir".
 
+```{r}
+dir.create("testdir")
+```
 
+#### Шаг 10
 
+Set your working directory to "testdir" with the setwd() command.
+
+```{r}
+setwd("testdir")
+```
+
+#### Шаг 11
+
+Create a file in your working directory called "mytest.R" using the file.create() function.
+
+```{r}
+file.create("mytest.R")
+```
+
+#### Шаг 12
+
+This should be the only file in this newly created directory. Let's check this by listing all the files in the current directory.
+
+```{r}
+dir()
+```
+
+#### Шаг 13
+
+Check to see if "mytest.R" exists in the working directory using the file.exists() function.
+
+```{r}
+file.exists("mytest.R")
+```
+
+#### Шаг 14
+
+Check to see if "mytest.R" exists in the working directory using the file.exists() function.
+
+```{r}
+file.info("mytest.R")
+```
+
+#### Шаг 15
+
+Change the name of the file "mytest.R" to "mytest2.R" by using file.rename().
+
+```{r}
+file.rename("mytest.R","mytest2.R")
+```
+
+#### Шаг 16
+
+Make a copy of "mytest2.R" called "mytest3.R" using file.copy().
+
+```{r}
+file.copy("mytest2.R","mytest3.R")
+```
+
+#### Шаг 17
+
+Provide the relative path to the file "mytest3.R" by using file.path().
+
+```{r}
+file.path("mytest3.R")
+```
+
+#### Шаг 18
+
+You can use file.path to construct file and directory paths that are independent of the operating system your R code is running on. Pass 'folder1' and 'folder2' as arguments to file.path to make a platform-independent pathname.
+
+```{r}
+file.path('folder1','folder2')
+```
+
+#### Шаг 19
+
+You can use file.path to construct file and directory paths that are independent of the operating system your R code is running on. Pass 'folder1' and 'folder2' as arguments to file.path to make a platform-independent pathname.
+
+```{r}
+file.path('folder1','folder2')
+```
 
 
 
