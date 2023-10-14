@@ -210,7 +210,7 @@ ls()
 
 #### Шаг 3
 
-Assign 9 to x using x <- 9.
+Assign 9 to x using x \<- 9.
 
 ```{r}
 x <- 9
@@ -338,11 +338,276 @@ file.path('folder1','folder2')
 
 #### Шаг 19
 
-You can use file.path to construct file and directory paths that are independent of the operating system your R code is running on. Pass 'folder1' and 'folder2' as arguments to file.path to make a platform-independent pathname.
+Take a look at the documentation for dir.create by entering ?dir.create . Notice the 'recursive' argument. In order to create nested directories, 'recursive' must be set to TRUE.
 
 ```{r}
-file.path('folder1','folder2')
+?dir.create
 ```
+
+#### Шаг 20
+
+Create a directory in the current working directory called "testdir2" and a subdirectory for it called "testdir3", all in one command by using dir.create() and file.path().
+
+```{r}
+dir.create(file.path('testdir2','testdir3'),recursive = TRUE)
+```
+
+#### Шаг 21
+
+Go back to your original working directory using setwd(). (Recall that we created the variable old.dir with the full path for the orginal working directory at the start of these questions.)
+
+```{r}
+setwd(old.dir)
+```
+
+### Последовательности чисел
+
+#### Шаг 1
+
+The simplest way to create a sequence of numbers in R is by using the `:` operator. Type 1:20 to see how it works.
+
+```{r}
+1:20
+```
+
+#### Шаг 2
+
+That gave us every integer between (and including) 1 and 20. We could also use it to create a sequence of real numbers. For example, try pi:10.
+
+```{r}
+pi:10
+```
+
+#### Шаг 3
+
+That gave us every integer between (and including) 1 and 20. We could also use it to create a sequence of real numbers. For example, try pi:10.
+
+```{r}
+pi:10
+```
+
+#### Шаг 4
+
+What happens if we do 15:1? Give it a try to find out
+
+```{r}
+15:1
+```
+
+#### Шаг 5
+
+Pull up the documentation for `:` now.
+
+```{r}
+?':'
+```
+
+#### Шаг 6
+
+The most basic use of seq() does exactly the same thing as the `:` operator. Try seq(1, 20) to see this.
+
+```{r}
+seq(1,20)
+```
+
+#### Шаг 7
+
+This gives us the same output as 1:20. However, let's say that instead we want a vector of numbers ranging from 0 to 10, incremented by 0.5. seq(0, 10, by=0.5) does just that. Try it out.
+
+```{r}
+seq(0,10,by=0.5)
+```
+
+#### Шаг 8
+
+Or maybe we don't care what the increment is and we just want a sequence of 30 numbers between 5 and 10. seq(5, 10, length=30) does the trick. Give it a shot now and store the result in a new variable called my_seq.
+
+```{r}
+my_seq <- seq(5, 10, length = 30)
+```
+
+#### Шаг 9
+
+To confirm that my_seq has length 30, we can use the length() function. Try it now.
+
+```{r}
+length(my_seq)
+```
+
+#### Шаг 10
+
+There are several ways we could do this. One possibility is to combine the `:` operator and the length() function like this: 1:length(my_seq). Give that a try.
+
+```{r}
+1:length(my_seq)
+```
+
+#### Шаг 11
+
+There are several ways we could do this. One possibility is to combine the `:` operator and the length() function like this: 1:length(my_seq). Give that a try.
+
+```{r}
+seq(along.with = my_seq)
+```
+
+#### Шаг 12
+
+There are several ways we could do this. One possibility is to combine the `:` operator and the length() function like this: 1:length(my_seq). Give that a try.
+
+```{r}
+seq_along(my_seq)
+```
+
+#### Шаг 13
+
+If we're interested in creating a vector that contains 40 zeros, we can use rep(0, times = 40). Try it out.
+
+```{r}
+rep(0, times = 40)
+```
+
+#### Шаг 14
+
+If we're interested in creating a vector that contains 40 zeros, we can use rep(0, times = 40). Try it out.
+
+```{r}
+rep(c(0,1,2), times = 10)
+```
+
+#### Шаг 15
+
+Finally, let's say that rather than repeating the vector (0, 1, 2) over and over again, we want our vector to contain 10 zeros, then 10 ones, then 10 twos. We can do this with the `each` argument. Try rep(c(0, 1, 2),each = 10).
+
+```{r}
+rep(c(0,1,2), each = 10)
+```
+
+### Векторы
+
+#### Шаг 1
+
+First, create a numeric vector num_vect that contains the values 0.5, 55, -10, and 6.
+
+```{r}
+num_vect <- c(0.5, 55, -10, 6)
+```
+
+#### Шаг 2
+
+Now, create a variable called tf that gets the result of num_vect < 1, which is read as 'num_vect is less than 1'.
+
+```{r}
+tf <- num_vect < 1
+```
+
+#### Шаг 3
+
+Print the contents of tf now.
+
+```{r}
+tf
+```
+
+#### Шаг 4
+
+Print the contents of tf now.
+
+```{r}
+num_vect >= 6
+```
+
+#### Шаг 5
+
+Create a character vector that contains the following words: "My", "name", "is". Remember to enclose each word in its own set of double quotes, so that R knows they are character strings. Store the vector in a variable called my_char.
+
+```{r}
+my_char <- c("My","name","is")
+```
+
+#### Шаг 6
+
+Print the contents of my_char to see what it looks like.
+
+```{r}
+my_char
+```
+
+#### Шаг 7
+
+Print the contents of my_char to see what it looks like.
+
+```{r}
+paste(my_char, collapse = " ")
+```
+
+#### Шаг 8
+
+To add (or 'concatenate') your name to the end of my_char, use the c() function like this: c(my_char, "your_name_here"). Place your name in double quotes where I've put "your_name_here". Try it now, storing the result in a new variable called my_name.
+
+```{r}
+my_name <- c(my_char, "Stepan")
+```
+
+#### Шаг 9
+
+To add (or 'concatenate') your name to the end of my_char, use the c() function like this: c(my_char, "your_name_here"). Place your name in double quotes where I've put "your_name_here". Try it now, storing the result in a new variable called my_name.
+
+```{r}
+my_name
+```
+
+#### Шаг 10
+
+Now, use the paste() function once more to join the words in my_name together into a single character string. Don't forget to say collapse = " "!
+
+```{r}
+paste(my_name,collapse = " ")
+```
+
+#### Шаг 11
+
+In the simplest case, we can join two character vectors that are each of length 1 (i.e. join two words). Try paste("Hello", "world!", sep = " "), where the `sep` argument tells R that we want to separate the joined elements with a single space.
+
+```{r}
+paste("Hello", "world!", sep = " ")
+```
+
+#### Шаг 12
+
+In the simplest case, we can join two character vectors that are each of length 1 (i.e. join two words). Try paste("Hello", "world!", sep = " "), where the `sep` argument tells R that we want to separate the joined elements with a single space.
+
+```{r}
+paste(c(1:3), c("X","Y","Z"), sep = "")
+```
+
+#### Шаг 13
+
+Vector recycling! Try paste(LETTERS, 1:4, sep = "-"), where LETTERS is a predefined variable in R containing a character vector of all 26 letters in the English alphabet.
+
+```{r}
+paste(LETTERS,1:4, sep = "-")
+```
+
+## Оценка результата
+
+В результате лабораторной работы мы прошли 4 урока по языку программирования R, тем самым разобравшись в базовых аспектах языка.
+
+## Вывод
+
+Мы получили базовые навыки работы с RStudio Desktop и языком R
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
