@@ -33,7 +33,6 @@ editor: visual
 
 ```{r}
 library(dplyr)
-library(tidyverse)
 DNS <- read.table("dns.log", header = FALSE, sep = "\t", quote = "", encoding="UTF-8")
 ```
 
